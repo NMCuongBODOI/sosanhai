@@ -69,7 +69,9 @@ def train_gnn(graph_path="food_graph.pt"):
     # (user <-> recipe, recipe <-> ingredient)
     graph = T.ToUndirected()(graph)
     
-    # 3.1. Chia tập Dữ liệu
+    # Đặt Seed để đảm bảo tập Train/Test/Val giống hệt nhau trên cả 3 mô hình
+    torch.manual_seed(42)
+    
     print("Chia tập tương tác thành Train/Val/Test...")
     transform = RandomLinkSplit(
         num_val=0.1,

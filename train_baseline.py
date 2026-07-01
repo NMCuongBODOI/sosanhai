@@ -49,8 +49,9 @@ def train_baseline(graph_path="food_graph.pt"):
     num_users = graph['user'].num_nodes
     num_recipes = graph['recipe'].num_nodes
     
-    # 3.1. Chia tập Dữ liệu (Train/Val/Test Split)
-    # Ta chỉ quan tâm đến cạnh user->recipe để train MF.
+    # Đặt Seed để đảm bảo tập Train/Test/Val giống hệt nhau trên cả 3 mô hình
+    torch.manual_seed(42)
+    
     print("Chia tập tương tác thành Train(80%) / Val(10%) / Test(10%)...")
     transform = RandomLinkSplit(
         num_val=0.1,
