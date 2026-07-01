@@ -162,7 +162,7 @@ def train_gnn(graph_path="food_graph.pt"):
         r_e = final_recipe_emb
         predictions = torch.matmul(u_e, r_e.t())
         
-    metrics = get_metrics(predictions, targets, k=20)
+    metrics = get_metrics(predictions, targets, k=20, total_items=num_recipes)
     print("Kết quả trên Heterogeneous GNN:")
     for k, v in metrics.items():
         print(f" - {k}: {v:.4f}")

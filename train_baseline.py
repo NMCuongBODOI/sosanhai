@@ -138,7 +138,7 @@ def train_baseline(graph_path="food_graph.pt"):
         # Nhân ma trận để ra điểm số cho toàn bộ recipe: [1000, 32] x [32, 41240] = [1000, 41240]
         predictions = torch.matmul(u_emb, r_emb.t()) 
         
-    metrics = get_metrics(predictions, targets, k=20)
+    metrics = get_metrics(predictions, targets, k=20, total_items=num_recipes)
     print("Kết quả trên Baseline (MF):")
     for k, v in metrics.items():
         print(f" - {k}: {v:.4f}")
